@@ -1,0 +1,2 @@
+# online-tickets-sales-website
+This website is made for online tickets sales. It uses an orchestrator to communicate with the paiement-Webservice and the supply-webservice that you can find here. We used Mahout to provide recommandations and kibana for displaying sales and supplies behaviours. web-service, orchestrator, proposal, payment, bank, soap, supply, website, Java, ode, apache, eclipse, maven, bootstrap, tickets, online sales, mysql, spring, hibernate, jsf, javascript, big data, R, mahout, kibana, elastic search, logstach
