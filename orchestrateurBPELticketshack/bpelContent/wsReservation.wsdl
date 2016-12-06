@@ -1,0 +1,144 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://soap.webservice.al28.afcepf.fr/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ServiceResaSoapImplService" targetNamespace="http://soap.webservice.al28.afcepf.fr/">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soap.webservice.al28.afcepf.fr/" elementFormDefault="unqualified" targetNamespace="http://soap.webservice.al28.afcepf.fr/" version="1.0">
+<xs:element name="annulerLesPlacesReservees" type="tns:annulerLesPlacesReservees"/>
+<xs:element name="annulerLesPlacesReserveesResponse" type="tns:annulerLesPlacesReserveesResponse"/>
+<xs:element name="getAllOccurenceByIdFilm" type="tns:getAllOccurenceByIdFilm"/>
+<xs:element name="getAllOccurenceByIdFilmResponse" type="tns:getAllOccurenceByIdFilmResponse"/>
+<xs:element name="nbrPlaceDispoByIdOccurence" type="tns:nbrPlaceDispoByIdOccurence"/>
+<xs:element name="nbrPlaceDispoByIdOccurenceResponse" type="tns:nbrPlaceDispoByIdOccurenceResponse"/>
+<xs:element name="reserverLesPlaces" type="tns:reserverLesPlaces"/>
+<xs:element name="reserverLesPlacesResponse" type="tns:reserverLesPlacesResponse"/>
+<xs:complexType name="annulerLesPlacesReservees">
+<xs:sequence>
+<xs:element minOccurs="0" name="listAAnnuler" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="annulerLesPlacesReserveesResponse">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="nbrPlaceDispoByIdOccurence">
+<xs:sequence>
+<xs:element minOccurs="0" name="idOccurence" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="nbrPlaceDispoByIdOccurenceResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAllOccurenceByIdFilm">
+<xs:sequence>
+<xs:element minOccurs="0" name="idFilm" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAllOccurenceByIdFilmResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:occurenceDto"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="occurenceDto">
+<xs:sequence>
+<xs:element name="id_occurence" type="xs:int"/>
+<xs:element name="nbPlaces" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="reserverLesPlaces">
+<xs:sequence>
+<xs:element minOccurs="0" name="listACheker" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="reserverLesPlacesResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="annulerLesPlacesReservees">
+<wsdl:part element="tns:annulerLesPlacesReservees" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getAllOccurenceByIdFilm">
+<wsdl:part element="tns:getAllOccurenceByIdFilm" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="reserverLesPlaces">
+<wsdl:part element="tns:reserverLesPlaces" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="getAllOccurenceByIdFilmResponse">
+<wsdl:part element="tns:getAllOccurenceByIdFilmResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="nbrPlaceDispoByIdOccurenceResponse">
+<wsdl:part element="tns:nbrPlaceDispoByIdOccurenceResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="reserverLesPlacesResponse">
+<wsdl:part element="tns:reserverLesPlacesResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="annulerLesPlacesReserveesResponse">
+<wsdl:part element="tns:annulerLesPlacesReserveesResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="nbrPlaceDispoByIdOccurence">
+<wsdl:part element="tns:nbrPlaceDispoByIdOccurence" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IserviceResaSoapApi">
+<wsdl:operation name="annulerLesPlacesReservees">
+<wsdl:input message="tns:annulerLesPlacesReservees" name="annulerLesPlacesReservees"></wsdl:input>
+<wsdl:output message="tns:annulerLesPlacesReserveesResponse" name="annulerLesPlacesReserveesResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="nbrPlaceDispoByIdOccurence">
+<wsdl:input message="tns:nbrPlaceDispoByIdOccurence" name="nbrPlaceDispoByIdOccurence"></wsdl:input>
+<wsdl:output message="tns:nbrPlaceDispoByIdOccurenceResponse" name="nbrPlaceDispoByIdOccurenceResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getAllOccurenceByIdFilm">
+<wsdl:input message="tns:getAllOccurenceByIdFilm" name="getAllOccurenceByIdFilm"></wsdl:input>
+<wsdl:output message="tns:getAllOccurenceByIdFilmResponse" name="getAllOccurenceByIdFilmResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="reserverLesPlaces">
+<wsdl:input message="tns:reserverLesPlaces" name="reserverLesPlaces"></wsdl:input>
+<wsdl:output message="tns:reserverLesPlacesResponse" name="reserverLesPlacesResponse"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="ServiceResaSoapImplServiceSoapBinding" type="tns:IserviceResaSoapApi">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="annulerLesPlacesReservees">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="annulerLesPlacesReservees">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="annulerLesPlacesReserveesResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="nbrPlaceDispoByIdOccurence">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="nbrPlaceDispoByIdOccurence">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="nbrPlaceDispoByIdOccurenceResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="getAllOccurenceByIdFilm">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="getAllOccurenceByIdFilm">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="getAllOccurenceByIdFilmResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="reserverLesPlaces">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="reserverLesPlaces">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="reserverLesPlacesResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="ServiceResaSoapImplService">
+<wsdl:port binding="tns:ServiceResaSoapImplServiceSoapBinding" name="ServiceResaSoapImplPort">
+<soap:address location="http://localhost:8080/serviceFournisseur/services/resaService"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

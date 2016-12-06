@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="../templates/commons.xhtml">
+	<ui:define name="body">
+			<div class="container">
+				<div class="col-md-12">
+					<ul class="breadcrumb">
+						<li><a href="pages/index.jsf">Acceuil</a></li>
+						<li>Confirmation</li>
+					</ul>
+				</div>
+
+				<div class="col-md-12" id="checkout">
+
+					<div class="box">
+						<h:form>
+							<h1>Confirmation</h1>
+							<ul class="nav nav-pills nav-justified">
+<!-- 								<li class="disabled"><a><i class="fa fa-map-marker"></i><br />Address</a></li> -->
+<!-- 								<li class="disabled"><a><i class="fa fa-truck"></i><br />Mode -->
+<!-- 										de livraison</a></li> -->
+								<li class="disabled"><a><i class="fa fa-money"></i><br />Mode
+										de paiement </a></li>
+								<li class="active"><a><i class="fa fa-eye"></i><br />Confirmation</a></li>
+							</ul>
+							<p>Chèr(e) client(e), votre commande a bien été prise en
+								compte, un mail de confirmation a été envoyé à votre adresse
+								email.</p>
+							<h3>
+								Numéro de Commande : 
+								<h:outputLabel value="#{MBhistorique.lastCommande.reference}" />
+							</h3>
+							<div class="table-responsive">
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th>Article</th>
+												<th>Quantité</th>
+												<th>Type</th>
+												<th>Date</th>
+												<th>prix total</th>
+											</tr>
+										</thead>
+										<tbody>
+											<ui:repeat var="ligne"
+												value="#{MBhistorique.getListeLigneCommande(MBhistorique.lastCommande)}">
+												<tr>
+													<th>#{MBhistorique.getEvenement(MBhistorique.getOccurence(MBhistorique.getTarif(ligne))).libelleEvenement}</th>
+													<td>#{ligne.quantitie}</td>
+													<td>#{MBhistorique.getTarif(ligne).libelleTarif}</td>
+													<td><h:outputText value="#{commande.dateCreation}"><f:convertDateTime pattern="YYYY-MM-DD"/> </h:outputText></td>
+													<td>#{MBhistorique.Total(MBhistorique.getTarif(ligne).prix,ligne.quantitie)}€</td>
+												</tr>
+											</ui:repeat>
+										</tbody>	
+										<tfoot>
+												<tr>
+													<th colspan="3"></th>
+													<th>Total</th>
+													<th><h:outputLabel id="Total"
+															value="#{MBhistorique.Totaux(MBhistorique.lastCommande)} €" /></th>
+												</tr>
+											</tfoot>								
+									</table>
+								</div>
+							
+							<!-- /.table-responsive -->
+
+						</h:form>
+
+					</div>
+					<!-- /.box -->
+
+				</div>
+				<!-- /.col-md-12 -->
+			</div>
+			<!-- /.container -->
+	</ui:define>
+</ui:composition>

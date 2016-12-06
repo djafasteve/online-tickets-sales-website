@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:bpel.ticketshack.al28.afcepf.fr="http://bpel.ticketshack.al28.afcepf.fr" xmlns:soap.webservice.al28.afcepf.fr="http://soap.webservice.al28.afcepf.fr/" xmlns:toto.fr="http://toto.fr">
+  <process name="bpel.ticketshack.al28.afcepf.fr:processTicketsHack">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="bpel.ticketshack.al28.afcepf.fr:processTicketsHackService" port="processTicketsHackPort"/>
+    </provide>
+    <invoke partnerLink="PartnerLinkpaiement">
+      <service name="toto.fr:BusinessPaiementService" port="BusinessPaiementPort"/>
+    </invoke>
+    <invoke partnerLink="PartnerLink1reservation">
+      <service name="soap.webservice.al28.afcepf.fr:ServiceResaSoapImplService" port="ServiceResaSoapImplPort"/>
+    </invoke>
+  </process>
+</deploy>

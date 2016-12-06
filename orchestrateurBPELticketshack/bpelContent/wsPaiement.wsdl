@@ -1,0 +1,83 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://toto.fr" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="BusinessPaiementService" targetNamespace="http://toto.fr">
+<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://toto.fr" elementFormDefault="unqualified" targetNamespace="http://toto.fr" version="1.0">
+<xs:element name="enregistrerPaiement" type="tns:enregistrerPaiement"/>
+<xs:element name="enregistrerPaiementResponse" type="tns:enregistrerPaiementResponse"/>
+<xs:element name="verifierCarte" type="tns:verifierCarte"/>
+<xs:element name="verifierCarteResponse" type="tns:verifierCarteResponse"/>
+<xs:complexType name="verifierCarte">
+<xs:sequence>
+<xs:element minOccurs="0" name="numeroCarte" type="xs:string"/>
+<xs:element minOccurs="0" name="crypto" type="xs:string"/>
+<xs:element minOccurs="0" name="dateExpiration" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="verifierCarteResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="enregistrerPaiement">
+<xs:sequence>
+<xs:element minOccurs="0" name="numeroCarte" type="xs:string"/>
+<xs:element minOccurs="0" name="crypto" type="xs:string"/>
+<xs:element minOccurs="0" name="dateExpiration" type="xs:string"/>
+<xs:element name="montant" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="enregistrerPaiementResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="verifierCarteResponse">
+<wsdl:part element="tns:verifierCarteResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="verifierCarte">
+<wsdl:part element="tns:verifierCarte" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="enregistrerPaiementResponse">
+<wsdl:part element="tns:enregistrerPaiementResponse" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="enregistrerPaiement">
+<wsdl:part element="tns:enregistrerPaiement" name="parameters"></wsdl:part>
+</wsdl:message>
+<wsdl:portType name="IBusinessPaiement">
+<wsdl:operation name="verifierCarte">
+<wsdl:input message="tns:verifierCarte" name="verifierCarte"></wsdl:input>
+<wsdl:output message="tns:verifierCarteResponse" name="verifierCarteResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="enregistrerPaiement">
+<wsdl:input message="tns:enregistrerPaiement" name="enregistrerPaiement"></wsdl:input>
+<wsdl:output message="tns:enregistrerPaiementResponse" name="enregistrerPaiementResponse"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="BusinessPaiementServiceSoapBinding" type="tns:IBusinessPaiement">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="verifierCarte">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="verifierCarte">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="verifierCarteResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="enregistrerPaiement">
+<soap:operation soapAction="" style="document"/>
+<wsdl:input name="enregistrerPaiement">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="enregistrerPaiementResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="BusinessPaiementService">
+<wsdl:port binding="tns:BusinessPaiementServiceSoapBinding" name="BusinessPaiementPort">
+<soap:address location="http://localhost:8080/wsPaiement/services/businessPaiement"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	template="/templates/commons.xhtml">
+	<ui:define name="body">
+		<div id="content">
+			<div class="container">
+				<div class="col-md-12">
+					<p><h2>Tableau de bord administrateur</h2></p>
+					<br />
+					<div class="row">
+						<div class="col-md-6" id="quantityCategory">
+							<iframe src="http://localhost:5601/app/kibana#/visualize/edit/Quantit%C3%A9-vendue-par-Cat%C3%A9gorie?embed&amp;_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-5y,mode:quick,to:now))&amp;_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((id:'1',params:(field:quantity),schema:metric,type:sum),(id:'2',params:(field:category,order:desc,orderBy:'1',size:5),schema:segment,type:terms)),listeners:(),params:(addLegend:!t,addTooltip:!t,isDonut:!t,shareYAxis:!t),type:pie))" 
+							height="400" width="500"></iframe>
+						</div>
+						<iframe src="http://localhost:5601/app/kibana#/visualize/edit/vente-par-prix?embed&amp;_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-5y,mode:quick,to:now))&amp;_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((id:'1',params:(field:quantity),schema:metric,type:sum),(id:'2',params:(field:theme,order:desc,orderBy:'1',size:8),schema:segment,type:terms),(id:'3',params:(field:price,order:desc,orderBy:'1',size:5),schema:segment,type:terms)),listeners:(),params:(addLegend:!t,addTooltip:!t,isDonut:!f,shareYAxis:!t),type:pie))" 
+						height="400" width="500"></iframe>
+					</div>
+					
+					<div class="row" id="quantityAnnee">
+					<div class="col-md-12">
+						<iframe src="http://localhost:5601/app/kibana#/visualize/edit/Vente-Par-Annee?embed&amp;_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-5y,mode:quick,to:now))&amp;_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((id:'1',params:(field:quantity),schema:metric,type:sum),(id:'2',params:(customInterval:'2h',extended_bounds:(),field:createDate,interval:auto,min_doc_count:1),schema:segment,type:date_histogram)),listeners:(),params:(addLegend:!t,addTimeMarker:!f,addTooltip:!t,defaultYExtents:!f,drawLinesBetweenPoints:!t,interpolate:linear,radiusRatio:9,scale:linear,setYExtents:!f,shareYAxis:!t,showCircles:!t,smoothLines:!f,times:!(),yAxis:()),type:line))" 
+						height="400" width="1060"></iframe>
+						</div>
+					</div>
+					<div class="row" id="topproduct">
+					<div class="col-md-12">
+						<iframe src="http://localhost:5601/app/kibana#/visualize/edit/Meilleures-Ventes?embed&amp;_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-5y,mode:quick,to:now))&amp;_a=(filters:!(),linked:!f,query:(query_string:(analyze_wildcard:!t,query:'*')),uiState:(),vis:(aggs:!((id:'1',params:(field:quantity),schema:metric,type:sum),(id:'2',params:(field:product,order:desc,orderBy:'1',size:10),schema:segment,type:terms)),listeners:(),params:(addLegend:!t,addTimeMarker:!f,addTooltip:!t,defaultYExtents:!f,mode:stacked,scale:linear,setYExtents:!f,shareYAxis:!t,times:!(),yAxis:()),type:histogram))" 
+						height="500" width="1060"></iframe>
+						 </div>
+					</div>
+					<div class="row">
+					<br /> <br />
+					<p><h2>Tableau de bord administrateur</h2></p>
+					<br />
+					<div class="col-md-6">
+					<img src="images/residualVsFitted.png" style="height: 400px; width: 500px"/>
+					</div>
+					<div class="col-md-6">
+					<img src="images/LinearRegression.png" style="height: 400px; width: 500px" />
+					</div>
+					</div>
+					<p>Ces diagrammes illustrent les calculs statistiques effectués sur la base des comportements d'achats des clients
+					 du site. A gauche la courbe de tendances qui exprime la répartition des ventes par gamme de prix et à droite la courbe
+					 de regression linéaire (statistique) qui permet de faire de l'estimation de vente à venir.
+					 Par exemple: on peut déduire de ce graphique que les prévisions de vente pour un article de 85 euros est de 46 articles. 
+					 Elle passa à 10 articles pour des ventes autour de 120 euros.</p>
+				</div>
+
+			</div>
+			<!-- /.container -->
+		</div>
+		<!-- /#content -->
+
+
+
+
+	</ui:define>
+</ui:composition>
